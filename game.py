@@ -66,6 +66,7 @@ def dive(typeship, distd):
                 return 2
     return 0
 
+
 def main():
     tesn = 0
     typeship = 0
@@ -164,6 +165,7 @@ def main():
                             if distd <= 500:
                                 print(" Enemy destroyer dropped depth bombs and sank your boat. You are dead!\n")
                                 break
+
         elif orders == 'DIVE' or orders == 'D':
             if typeship == 0:
                 print("WE DON'T HAVE TO HIDE. NO ONE IN CONTACT\n")
@@ -174,22 +176,20 @@ def main():
                     tesn = 0
                     typeship = 0
                     tonn = 0
-                else:
-                    if result_dive == 2:
-                        print("WE SUCCESSFULLY LEFT THE LINE OF FIRE\n")
-                        tesn = 0
-                        typeship = 0
-                        tonn = 0
-                        distd = 0
-                    else:
-                        if result_dive == 3:
-                            print("WE DID NOT HIDE.")
-                            print("BOAT DESTROYED.\n")
-                            tesn = 0
-                            typeship = 0
-                            tonn = 0
-                            distd = 0
-                            break
+                elif result_dive == 2:
+                    print("WE SUCCESSFULLY LEFT THE LINE OF FIRE\n")
+                    tesn = 0
+                    typeship = 0
+                    tonn = 0
+                    distd = 0
+                elif result_dive == 3:
+                    print("WE DID NOT HIDE.")
+                    print("BOAT DESTROYED.\n")
+                    tesn = 0
+                    typeship = 0
+                    tonn = 0
+                    distd = 0
+                    break
         else:
             print("ORDER NOT UNDERSTOOD, REPEAT:\n")
 
@@ -199,3 +199,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
