@@ -3,6 +3,18 @@ LIN = linux
 SCRIPT = game.py
 WIN_EXE = --onefile $(SCRIPT) --distpath $(WIN) --workpath $(WIN) --specpath $(WIN) --clean
 LIN_EXE = --onefile $(SCRIPT) --distpath $(LIN) --workpath $(LIN) --specpath $(LIN) --clean
+BUILD_LIN = pyinstaller --onefile $(SCRIPT) -n game_lin
+
+
+lin:
+	mkdir -p lin
+	@echo "Сборка для Linux..."
+	@if $(BUILD_LIN); then \
+		mv dist/game_lin lin/; \
+		rm -rf build dist game_lin.spec __pycache__; \
+	else \
+		echo "Ошибка при сборке для Linux"; \
+	fi
 
 
 windows:
@@ -10,12 +22,6 @@ windows:
 	pip install pyinstaller
 	pyinstaller $(WIN_EXE)
 	./$(WIN)/Game.exe
-
-linux:
-	mkdir $(LIN)
-	pip install pyinstaller
-	pyinstaller $(LIN_EXE)
-	./$(LIN)/Game.exe
 
 web: game.py
 	@echo "Creating game.html..."
